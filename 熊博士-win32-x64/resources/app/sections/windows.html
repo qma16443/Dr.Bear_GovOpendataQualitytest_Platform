@@ -1,0 +1,96 @@
+﻿<template class="task-template">
+  <section id="windows-section" class="section js-section u-category-windows">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="{{icon}}"></use></svg>
+          {{title}}
+        </h1>
+       
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="new-window-demo-toggle" class="js-container-target demo-toggle-button">获取(更新)数据
+          <div class="demo-meta u-avoid-clicks">支持系统: Win, OS X, Linux </div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="run-spider" v-on:click="query(data)">Run</button>
+          </div>
+          <p>运行爬虫，对数据进行更新</p>
+
+          <div id='load-data' class="demo-protip">
+              <span v-for="msg in message" track-by="$index">{{msg}}<br></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="manage-window-demo-toggle" class="js-container-target demo-toggle-button">浏览数据集
+          <div class="demo-meta u-avoid-clicks">支持系统: Win, OS X, Linux </div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button id='skan-window' class="demo-button" data-modal="fs-catalog" >🌰 点击进入全屏 🌰</button> <!--  -->
+            <span class="demo-response" id="manage-window-reply"></span>
+          </div>
+
+          <div id='skan-data' class="wrap-catalog">
+            <!-- 数据展示 -->
+            <div id='catalog' class="tab-pane fade in active" >
+
+                    <table class="table table-bordered table-hover">
+                        <caption class="h3 text-info">{{title}}</caption>
+                        <tr v-for="item in items">
+                            <th class="text-center" v-if="$index==1" v-for="it in item" track-by="$index">{{it}}</th>
+                            <td class="text-center" v-if="$index>1" v-for="it in item" track-by="$index">{{it}}</td>
+                        </tr>
+                    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="analyse-window-demo-toggle" class="js-container-target demo-toggle-button">数据质量分析
+          <div class="demo-meta u-avoid-clicks">支持系统: Win, OS X, Linux </div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <button class="demo-button" id="anal-window">🌰 点击进入全屏 🌰</button>
+          </div>
+
+          <div>
+              <ul class=" nav-pills nav-justified" >
+                  <li class="active"><a href="#section-1">散点图</a></li>
+                  <li><a href="#section-2">直方图</a></li>
+                  <li><a href="#section-3">折线图</a></li>
+                  <li><a href="#section-4">箱型图</a></li>
+                  <li><a href="#section-5">饼图</a></li>
+              </ul>
+          </div>
+
+          <div id='anal-data' class="demo-protip">
+            <!-- 数据展示 -->
+            
+            <div id="main" style="width: 493px;height:400px;"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+      require('./renderer-process/create-window')
+   
+    </script>
+
+  </section>
+</template>
